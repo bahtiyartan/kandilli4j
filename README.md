@@ -1,7 +1,7 @@
 # kandilli4j
 A simple java api to read latest earthquakes from Kandilli Observatory and Earthquake Research Institute (Kandilli Rasathanesi)
 
-Kandilli Rasathanesi sayfasından son depremleri listeleyen mini api.
+Kandilli Rasathanesi sayfasına bağlanarak son depremleri getiren basit bir api.
 
 
 #usage
