@@ -4,29 +4,31 @@ A tiny api to read latest earthquakes from Kandilli Observatory Earthquake Resea
 Kandilli Rasathanesi sayfasından son depremleri listeleyen mini api.
 
 
-EarthquakeListProvider iProvider = new EarthquakeListProvider();
+#usage
 
-try {
-	// reads all earthquakes
-	Vector<EarthquakeInfo> all = iProvider.getLastEarthquakes();
+	EarthquakeListProvider iProvider = new EarthquakeListProvider();
 
-	// reads last ten earthquakes
-	Vector<EarthquakeInfo> lastten = iProvider.getLastEarthquakes(10);
+	try {
+		// reads all earthquakes
+		Vector<EarthquakeInfo> all = iProvider.getLastEarthquakes();
 
-	// reads all earthquakes greater than 4.0 (Ml)
-	Vector<EarthquakeInfo> allGreaterThan4Ml = iProvider.getLastEarthquakes(4.0);
+		// reads last ten earthquakes
+		Vector<EarthquakeInfo> lastten = iProvider.getLastEarthquakes(10);
 
-	// reads last ten earthquakes greater than 4.0 (Ml)
-	Vector<EarthquakeInfo> lastTenGreaterThan4Ml = iProvider.getLastEarthquakes(10, 4.0);
+		// reads all earthquakes greater than 4.0 (Ml)
+		Vector<EarthquakeInfo> allGreaterThan4Ml = iProvider.getLastEarthquakes(4.0);
 
-	for (EarthquakeInfo iInfo : lastTenGreaterThan4Ml) {
-		System.out.println(iInfo.toString());
+		// reads last ten earthquakes greater than 4.0 (Ml)
+		Vector<EarthquakeInfo> lastTenGreaterThan4Ml = iProvider.getLastEarthquakes(10, 4.0);
+
+		for (EarthquakeInfo iInfo : lastTenGreaterThan4Ml) {
+			System.out.println(iInfo.toString());
+		}
+
+	} catch (ReadEarthquakeException e) {
+		System.out.println("can not read earthquake information");
+		e.printStackTrace();
+	} catch (ParseEarthquakeException e) {
+		System.out.println("can not parse earthquake information");
+		e.printStackTrace();
 	}
-
-} catch (ReadEarthquakeException e) {
-	System.out.println("can not read earthquake information");
-	e.printStackTrace();
-} catch (ParseEarthquakeException e) {
-	System.out.println("can not parse earthquake information");
-	e.printStackTrace();
-}
