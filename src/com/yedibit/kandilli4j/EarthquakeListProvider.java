@@ -61,55 +61,61 @@ public class EarthquakeListProvider {
 
 				String strLine = strLines[i];
 
-				// read date
-				int nTmpIndex = strLine.indexOf("  ");
-				String strDate = strLine.substring(0, nTmpIndex);
-				Date dDate = formatter.parse(strDate);
-				strLine = strLine.substring(nTmpIndex + 1).trim();
-
-				// read latitude
-				nTmpIndex = strLine.indexOf("  ");
-				double nLatitude = Double.parseDouble(strLine.substring(0, nTmpIndex));
-				strLine = strLine.substring(nTmpIndex + 1).trim();
-
-				// read longitude
-				nTmpIndex = strLine.indexOf("  ");
-				double nLongitude = Double.parseDouble(strLine.substring(0, nTmpIndex));
-				strLine = strLine.substring(nTmpIndex + 1).trim();
-
-				nTmpIndex = strLine.indexOf(" ");
-				double nDepth = Double.parseDouble(strLine.substring(0, nTmpIndex));
-				strLine = strLine.substring(nTmpIndex + 1).trim();
-
-				// clear magnitude 1
-				nTmpIndex = strLine.indexOf(" ");
-				strLine = strLine.substring(nTmpIndex + 1).trim();
-
-				// read magnitude
-				nTmpIndex = strLine.indexOf(" ");
-				double nMagnitude = 0.0;
-
 				try {
-					nMagnitude = Double.parseDouble(strLine.substring(0, nTmpIndex));
-				} catch (NumberFormatException ex) {
-					printlog("can not read magnitude line:" + strLines[i]);
-				}
-				strLine = strLine.substring(nTmpIndex + 1).trim();
 
-				if (nMagnitude >= pMinMagnitude) {
-					// clear magnitude 3
+					// read date
+					int nTmpIndex = strLine.indexOf("  ");
+					String strDate = strLine.substring(0, nTmpIndex);
+					Date dDate = formatter.parse(strDate);
+					strLine = strLine.substring(nTmpIndex + 1).trim();
+
+					// read latitude
+					nTmpIndex = strLine.indexOf("  ");
+					double nLatitude = Double.parseDouble(strLine.substring(0, nTmpIndex));
+					strLine = strLine.substring(nTmpIndex + 1).trim();
+
+					// read longitude
+					nTmpIndex = strLine.indexOf("  ");
+					double nLongitude = Double.parseDouble(strLine.substring(0, nTmpIndex));
+					strLine = strLine.substring(nTmpIndex + 1).trim();
+
+					nTmpIndex = strLine.indexOf(" ");
+					double nDepth = Double.parseDouble(strLine.substring(0, nTmpIndex));
+					strLine = strLine.substring(nTmpIndex + 1).trim();
+
+					// clear magnitude 1
 					nTmpIndex = strLine.indexOf(" ");
 					strLine = strLine.substring(nTmpIndex + 1).trim();
 
-					// read place
-					nTmpIndex = strLine.indexOf("   ");
-					String strPlace = strLine.substring(0, nTmpIndex);
+					// read magnitude
+					nTmpIndex = strLine.indexOf(" ");
+					double nMagnitude = 0.0;
+
+					try {
+						nMagnitude = Double.parseDouble(strLine.substring(0, nTmpIndex));
+					} catch (NumberFormatException ex) {
+						printlog("can not read magnitude line:" + strLines[i]);
+					}
 					strLine = strLine.substring(nTmpIndex + 1).trim();
 
-					String strNitelik = strLine.trim();
+					if (nMagnitude >= pMinMagnitude) {
+						// clear magnitude 3
+						nTmpIndex = strLine.indexOf(" ");
+						strLine = strLine.substring(nTmpIndex + 1).trim();
 
-					EarthquakeInfo iEarthquake = new EarthquakeInfo(dDate, nLatitude, nLongitude, nDepth, nMagnitude, strPlace, strNitelik);
-					vEarthquakeList.add(iEarthquake);
+						// read place
+						nTmpIndex = strLine.indexOf("   ");
+						String strPlace = strLine.substring(0, nTmpIndex);
+						strLine = strLine.substring(nTmpIndex + 1).trim();
+
+						String strNitelik = strLine.trim();
+
+						EarthquakeInfo iEarthquake = new EarthquakeInfo(dDate, nLatitude, nLongitude, nDepth, nMagnitude, strPlace, strNitelik);
+						vEarthquakeList.add(iEarthquake);
+					}
+				} catch (Exception e) {
+					//System.out.println(i + "parsing" + strLine);
+					//do nothing intentionally for temp
 				}
 			}
 		} catch (Exception e) {
