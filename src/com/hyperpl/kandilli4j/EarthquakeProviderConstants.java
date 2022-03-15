@@ -1,4 +1,4 @@
-package com.yedibit.kandilli4j;
+package com.hyperpl.kandilli4j;
 
 public abstract class EarthquakeProviderConstants {
 

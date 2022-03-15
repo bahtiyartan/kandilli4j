@@ -1,4 +1,4 @@
-package com.yedibit.kandilli4j.exception;
+package com.hyperpl.kandilli4j.exception;
 
 @SuppressWarnings("serial")
 public class ParseEarthquakeException extends Exception {

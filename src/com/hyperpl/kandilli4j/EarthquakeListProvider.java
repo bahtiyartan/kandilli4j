@@ -1,4 +1,4 @@
-package com.yedibit.kandilli4j;
+package com.hyperpl.kandilli4j;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -10,8 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
-import com.yedibit.kandilli4j.exception.ParseEarthquakeException;
-import com.yedibit.kandilli4j.exception.ReadEarthquakeException;
+import com.hyperpl.kandilli4j.exception.ParseEarthquakeException;
+import com.hyperpl.kandilli4j.exception.ReadEarthquakeException;
 
 public class EarthquakeListProvider {
 

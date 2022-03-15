@@ -1,11 +1,11 @@
-package com.yedibit.kandilli4j.test;
+package com.hyperpl.kandilli4j.test;
 
 import java.util.Vector;
 
-import com.yedibit.kandilli4j.EarthquakeInfo;
-import com.yedibit.kandilli4j.EarthquakeListProvider;
-import com.yedibit.kandilli4j.exception.ParseEarthquakeException;
-import com.yedibit.kandilli4j.exception.ReadEarthquakeException;
+import com.hyperpl.kandilli4j.EarthquakeInfo;
+import com.hyperpl.kandilli4j.EarthquakeListProvider;
+import com.hyperpl.kandilli4j.exception.ParseEarthquakeException;
+import com.hyperpl.kandilli4j.exception.ReadEarthquakeException;
 
 public class TestKandilli4j {
 
